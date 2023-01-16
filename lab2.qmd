@@ -1,0 +1,76 @@
+---
+title: "Lab 2 - CTEs and Nested Data"
+author: "Jeremy Morris"
+affiliation-title: "University of Utah"
+date: last-modified
+title-block-style: default
+title-block-banner: "#890000"
+format: 
+  html:
+      embed-resources: true
+      theme: flatly
+      code-block-bg: true
+      code-block-border-left: "#3ABFC0"
+      highlight-style: printing
+execute:
+    message: false
+    warning: false
+    error: false
+    echo: false
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+In this lab, we are going to create a dataset for the final project and load data into tables. We are then going to do some practice on CTEs and nested data.
+
+## Setup
+
+Setup our SaaS user database using the following instructions.
+
+* Create a data set called "saas_user_db".
+* Create the customer table.
+    * After clicking the "saas_user_db" data set, click the "create table" button in the top ribbon.
+    * Download the customers.json file from Canvas here
+    * Click create
+* Create the users table via query and load data via query. The user table has the following fields.
+    * customer_id STRING,
+    * user_id STRING,
+    * created_date DATE,
+    * login_ready INT64,
+    * days_possible INT64,
+    * pct_active float64,
+    * deleted_date STRING,
+    * pct_login FLOAT64,
+    * user_role INT64,
+    * user_type STRING,
+    * login_info -- this is an array of two fields
+        * dt DATE
+        * minutes INT64
+
+## Assignment
+
+Submit a .sql file with the following queries. Each query should be separated by the string `--QUERY`. Do not start the file with `--QUERY`. All queries must be in this order.
+
+1. Select all columns from the customer table
+1. Select customer id, user id and the number of logins for each user.
+1. Select the following columns from bigquery-public-data.google_analytics_sample.google_sessions_ for January through April of 2017. Limit the output to 2000 rows.
+    * fullVisitorId,
+    * visitNumber,
+    * visitId,
+    * visitStartTime,
+    * `date`,
+    * visits,
+    * source (Traffic Source),
+    * transactionId,
+    * transactionRevenue
+1. Calculate the following and standardize into one table using a CTE.
+    * Number of visits per day from ga_sessions between January 1 and April 1 of 2017
+    * Number of commits from GitHub between between January 1 and April 1 of 2017
+        * Use `date(timestamp_seconds(committer.date.seconds))` to get the commit date
+    * Number of logins from saas-user-db between January 1 and April 1 of 2021
+    * Schema should include dt, platform_name, n
+        * Platforms should be called "ga_sessions", "github_commits", "saas_user_db"
+1. BONUS Using bigquery-public-data.london_bicycles.cycle_hire, determine how many bikes were at each station throughout the day.
+    * This bonus question will be on each assignment.

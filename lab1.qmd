@@ -1,0 +1,57 @@
+---
+title: "Lab 1 - Warmup Exercises"
+author: "Jeremy Morris"
+affiliation-title: "University of Utah"
+date: last-modified
+title-block-style: default
+title-block-banner: "#890000"
+format: 
+  html:
+      embed-resources: true
+      theme: flatly
+      code-block-bg: true
+      code-block-border-left: "#3ABFC0"
+      highlight-style: printing
+execute:
+    message: false
+    warning: false
+    error: false
+    echo: false
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## Setup/Instructions
+
+The purpose of these exercises is to get setup in BigQuery and to practice submitting assignments. To get started, complete the following steps.
+
+1. Click [this link](https://gcp.secure.force.com/GCPEDU?cid=2sIvHbDoT%2Ff%2BEzByu5KPwgUmwco%2BxXtJQigbUg7roOzPMGUYsn0CEUhJRvbwo02x/) to sign up for Google Cloud.
+    * You will be asked for a name and email address, which needs to match your school domain. A confirmation email will be sent to you with a coupon code.
+    * You must use an email address that ends in utah.edu, eccles.utah.edu, or umail.utah.edu for this course
+1. In Google Cloud, create a new project for this course. Call it whatever you like.
+1. Star the bigquery-public-data data set (this will make it easier to find public data sets throughout the session).
+    1. In the search bar type "google_trends"
+    1. Click the link that says "Broaden search to all"
+    1. Star "bigquery-public-data"
+1. Star the following data sets (we will be using them throughout the course).
+    * google_trends
+    * github_repos
+    * google_analytics_sample
+    * london_bicycles
+
+## Assignment
+
+In this assignment, submit the following queries. Before each query, put the following `--QUERY`. This will allow me to separate and run each query. Each query will be run on the `top_terms` table from the Google Trends dataset.  
+
+1. Write a query that selects the following columns and limit the results to 1,000 rows.
+    * term
+    * week
+    * rank
+1. Write a query that selects the same columns and returns terms ranked in the top 10 after November 1, 2022.
+    * This query should have the same columns as above.
+1. Write a query that counts how many times each term has shown up in the top 10 since November 1, 2022.
+    * This query should have two columns called "term" and "n"
+
+Submit the SQL file to this assignment. I will retrieve those files, run them against my response file.
